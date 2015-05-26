@@ -6,7 +6,7 @@ What is 'itWorks'?
 Remember those dark days, when your internet didn't work? when you would  
 plug in your external hard drive and watch movies, maybe check your  
 downloads folder for \*insert some weird package here\*, browsing  
-/usr/share/doc to read something thats interesting, all the while  
+/usr/share/doc to read something that's interesting, all the while  
 regularly pinging a site to know if you're internet is up or not?  
 
 Well 'itWorks' automates that last part.  
