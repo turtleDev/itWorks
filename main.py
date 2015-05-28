@@ -16,7 +16,7 @@ print "Working"
 
 def ping():
     p = subprocess.call(cmd, shell=True, stdout=subprocess.PIPE)
-    # I've passed stdout=subprocess.PIPE to call() to supress any output.
+    # I've passed stdout=subprocess.PIPE to call() function to supress any output.
     return p
 try:
     while True:
