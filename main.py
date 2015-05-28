@@ -24,10 +24,6 @@ try:
         if result == 0:
             subprocess.call("notify-send '{}' '{}'".format(title, message), shell=True)
             break
-        elif result == 2: 
-        # return value of 2 means that process got ctrl-c'd
-            print "\nExiting"
-            break
         else:
             time.sleep(4)
 except KeyboardInterrupt:
