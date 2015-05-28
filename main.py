@@ -1,26 +1,35 @@
 '''
-	itWorks - A little script that notifies you when your
-	          internet is up.
+    itWorks - A little script that notifies you when your
+              internet is up.
 '''
 
-import os
+import subprocess
 import time
 
-#TODO: find a way to supress ping output and a way to exit the script
-#FIXME: keyboard interrupt doesn't work every time because of sleep().
-#       find a solution.
 
 cmd = "ping www.google.com -c 4"
 title = "Notification"
 message = "Your Internet is now working."
+
+
+print "Working"
+
+def ping():
+    p = subprocess.call(cmd, shell=True, stdout=subprocess.PIPE)
+    # to supress output, i've used PIPE for stdout
+    return p
 try:
-	while True:
-		result = os.system(cmd)
-		if result == 0:
-			os.system("notify-send '{}' '{}'".format(title, message))
-			break
-		else:
-			time.sleep(4)
-except KeyboardInterrupt, e:
-	print "Exiting"
+    while True:
+        result = ping()
+        if result == 0:
+            subprocess.call("notify-send '{}' '{}'".format(title, message), shell=True)
+            break
+        elif result == 2: 
+        # return value of 2 means that process got ctrl-c'd
+            print "\nExiting"
+            break
+        else:
+            time.sleep(4)
+except KeyboardInterrupt:
+    print "\b\bExiting"
 
