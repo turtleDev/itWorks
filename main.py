@@ -34,7 +34,8 @@ def main():
         while True:
             result = ping()
             if result == 0:
-                subprocess.call("notify-send '{}' '{}'".format(title, message), shell=True)
+                subprocess.call("notify-send '{}' '{}'".format(title, message),
+                                                                    shell=True)
                 play_notification_sound(sound_file)
                 break
             else:
