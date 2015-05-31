@@ -6,6 +6,7 @@
 import subprocess
 import time
 import pygame.mixer
+import os
 
 pygame.mixer.init()
 
@@ -13,6 +14,7 @@ cmd = "ping www.google.com -c 4"
 title = "Notification"
 message = "Your Internet is now working."
 sound_file = 'data/sound.ogg'
+icon = os.path.join(os.getcwd(),'data/icon.png')
 
 def play_notification_sound(file_path):
     sound = pygame.mixer.Sound(file_path)
@@ -34,7 +36,7 @@ def main():
         while True:
             result = ping()
             if result == 0:
-                subprocess.call("notify-send '{}' '{}'".format(title, message),
+                subprocess.call("notify-send '{}' '{}' -i {}".format(title, message, icon),
                                                                     shell=True)
                 play_notification_sound(sound_file)
                 break
