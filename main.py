@@ -14,6 +14,7 @@ cmd = "ping www.google.com -c 4"
 title = "Notification"
 message = "Your Internet is now working."
 sound_file = 'data/sound.ogg'
+options="--urgency=critical"
 icon = os.path.join(os.getcwd(),'data/icon.png')
 
 def play_notification_sound(file_path):
@@ -36,8 +37,11 @@ def main():
         while True:
             result = ping()
             if result == 0:
-                subprocess.call("notify-send '{}' '{}' -i {}".format(title, message, icon),
-                                                                    shell=True)
+                string = "notify-send '{}' '{}' -i {} {}".format(title,
+                                                                 message,
+                                                                 icon,
+                                                                 options)
+                subprocess.call(string, shell=True)
                 play_notification_sound(sound_file)
                 break
             else:

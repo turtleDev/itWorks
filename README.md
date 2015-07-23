@@ -13,3 +13,15 @@ Well 'itWorks' automates that last part.
 It keeps trying to ping a website( by default www.google.com )  
 until the ping is successful, and displays a dtop notification  
 when it does succeed.
+
+You can customize the notification to your liking. It works currently   
+uses libnotify(notify-send) for the popup notification. So it currently  
+only works for Linux. Here's how the notification looks by default: 
+  
+
+![Example Screen Shot](data/itworks.png)
+
+System Requirements
+------------------
+Well, you'd need a system that supports notify-send.  
+Apart from that, it should work everywhere.
